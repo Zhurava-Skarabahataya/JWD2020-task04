@@ -8,19 +8,29 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		int n = 6;
+		int n;
+		int[][] matrix;
 
-		int[][] matrix = getMatrix(n);
+		n = 6;
+		matrix = getMatrix(n);
 
 		printMatrix(matrix);
 	}
 
 	private static int[][] getMatrix(int n) {
 
-		int[][] result = new int[n][n];
+		int[][] result;
+		result = new int[n][n];
 
-		for (int i = 0; i < result.length; i++) {
-			result[i][i] = (i + 1) * (i + 2);
+		for (int index = 0; index < result.length; index++) {
+			
+			int firstMul;
+			int secondMul;
+			
+			firstMul = index + 1;
+			secondMul = index + 2;
+			
+			result[index][index] = firstMul * secondMul;
 		}
 
 		return result;
@@ -28,10 +38,11 @@ public class Main {
 
 	private static void printMatrix(int[][] matrix) {
 
-		for (int i = 0; i < matrix.length; i++) {
+		for (int row = 0; row < matrix.length; row++) {
 
-			for (int j = 0; j < matrix[i].length; j++) {
-				System.out.print(matrix[i][j] + " ");
+			for (int col = 0; col < matrix[row].length; col++) {
+				
+				System.out.printf("%3d ", matrix[row][col]);
 			}
 
 			System.out.println();

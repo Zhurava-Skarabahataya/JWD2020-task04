@@ -5,29 +5,50 @@
 package by.epamtc.zhurava.lesson4.task03;
 
 public class Main {
+
 	public static void main(String[] args) {
-		int n = 10;
-		int[][] matrix = getMatrix(n);
+
+		int n;
+		int[][] matrix;
+
+		n = 10;
+		matrix = getMatrix(n);
 
 		printMatrix(matrix);
 	}
 
 	private static int[][] getMatrix(int n) {
 
+		int resultLength;
 		int[][] result;
-		result = new int[n][n];
-
 		int middle;
+
+		resultLength = n;
+		result = new int[resultLength][resultLength];
+
 		middle = n / 2;
 
 		for (int row = 0; row < middle; row++) {
-			for (int col = row; col < n - row; col++) {
+
+			int lastButOneCol;
+			lastButOneCol = n - row;
+
+			for (int col = row; col < lastButOneCol; col++) {
+
 				result[row][col] = 1;
 			}
 		}
 
-		for (int row = middle; row < n; row++) {
-			for (int col = n - (row + 1); col < (row + 1); col++) {
+		for (int row = middle; row < resultLength; row++) {
+			
+			int endCol;
+			int startCol;
+			
+			endCol = row + 1;
+			startCol = resultLength - endCol;
+			
+			for (int col = startCol; col < endCol; col++) {
+				
 				result[row][col] = 1;
 			}
 		}
@@ -37,10 +58,10 @@ public class Main {
 
 	private static void printMatrix(int[][] matrix) {
 
-		for (int i = 0; i < matrix.length; i++) {
+		for (int row = 0; row < matrix.length; row++) {
 
-			for (int j = 0; j < matrix[i].length; j++) {
-				System.out.print(matrix[i][j] + " ");
+			for (int col = 0; col < matrix[row].length; col++) {
+				System.out.printf("%2d ", matrix[row][col]);
 			}
 
 			System.out.println();

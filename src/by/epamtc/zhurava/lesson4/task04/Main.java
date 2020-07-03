@@ -8,21 +8,32 @@ public class Main {
 
 	public static void main(String[] args) {
 
-		int[] array = new int[] { 2, 5, 7, 3, 1, 4, 6 };
+		int[] array;
+		int[][] matrix;
 
-		int[][] matrix = getMatrixFromArray(array);
+		array = new int[] { 2, 5, 7, 3, 1, 4, 6 };
+
+		matrix = getMatrixFromArray(array);
 
 		printMatrix(matrix);
 	}
 
 	private static int[][] getMatrixFromArray(int[] array) {
-		
+
 		int[][] result;
 		result = new int[array.length][array.length];
 
 		for (int row = 0; row < result.length; row++) {
+			
 			for (int col = 0; col < array.length; col++) {
-				result[row][col] = (int) Math.pow(array[col], row + 1);
+				
+				int grade;
+				int number;
+				
+				grade = row + 1;
+				number = (int) Math.pow(array[col], grade);
+				
+				result[row][col] = number;
 			}
 		}
 
@@ -31,10 +42,11 @@ public class Main {
 
 	private static void printMatrix(int[][] matrix) {
 
-		for (int i = 0; i < matrix.length; i++) {
+		for (int row = 0; row < matrix.length; row++) {
 
-			for (int j = 0; j < matrix[i].length; j++) {
-				System.out.printf("%6d ", matrix[i][j]);
+			for (int col = 0; col < matrix[row].length; col++) {
+				
+				System.out.printf("%6d ", matrix[row][col]);
 			}
 
 			System.out.println();

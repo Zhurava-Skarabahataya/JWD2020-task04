@@ -19,6 +19,7 @@ public class Main {
 
 		if (result != null) {
 			printMatrix(result);
+			
 		} else {
 			System.out.println("Умножение невозможно");
 		}
@@ -31,11 +32,21 @@ public class Main {
 			return null;
 		}
 
-		int[][] result = new int[firstMatrix.length][secondMatrix[0].length];
+		int newMatrixRows;
+		int newMatrixCols;
+		int[][] result;
+
+		newMatrixRows = firstMatrix.length;
+		newMatrixCols = secondMatrix[0].length;
+		
+		result = new int[newMatrixRows][newMatrixCols];
 
 		for (int i = 0; i < result.length; i++) {
+			
 			for (int j = 0; j < result.length; j++) {
+				
 				for (int k = 0; k < result[0].length; k++) {
+					
 					result[i][k] += firstMatrix[i][j] * secondMatrix[j][k];
 				}
 			}
@@ -46,10 +57,11 @@ public class Main {
 
 	private static void printMatrix(int[][] matrix) {
 
-		for (int i = 0; i < matrix.length; i++) {
+		for (int row = 0; row < matrix.length; row++) {
 
-			for (int j = 0; j < matrix[i].length; j++) {
-				System.out.print(matrix[i][j] + " ");
+			for (int col = 0; col < matrix[row].length; col++) {
+				
+				System.out.print(matrix[row][col] + " ");
 			}
 
 			System.out.println();
